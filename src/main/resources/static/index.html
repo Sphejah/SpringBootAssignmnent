@@ -1,29 +1,41 @@
-
+<!-- index.html -->
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
 <head>
     <title>Your first Spring application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h2>Add Course</h2>
 <form action="/add" method="POST">
-    <p>Let's add a course.</p>
-
-    <div>
-        <label for="courseName">Course name:</label>
-        <input name="name" id="courseName" value="Advanced Programming">
-    </div>
-    <div>
-        <label for="courseDescription">Course description:</label>
-        <input name="description" id="courseDescription" value="Learn advanced programming concepts">
-    </div>
-    <div>
-        <button>Add course</button>
-    </div>
+    <label for="courseName">Course name:</label>
+    <input name="name" id="courseName" value="Advanced Programming"><br>
+    <label for="courseDescription">Course description:</label>
+    <input name="description" id="courseDescription" value="Learn advanced programming concepts"><br>
+    <button>Add course</button>
 </form>
 
+<h2>List Courses</h2>
+<ul>
+    <th:block th:each="course : ${courses}">
+        <li>
+            <span th:text="${course.name}"></span> - <span th:text="${course.description}"></span> - <span th:text="${course.category}"></span>
+            <form action="/update/${course.id}" method="POST">
+                <label for="updateName">Update name:</label>
+                <input name="name" id="updateName" placeholder="Enter updated name">
+                <label for="updateDescription">Update description:</label>
+                <input name="description" id="updateDescription" placeholder="Enter updated description">
+                <button>Update</button>
+            </form>
+            <form action="/delete/${course.id}" method="POST">
+                <button>Delete</button>
+            </form>
+        </li>
+    </th:block>
+</ul>
+
 <form action="/list" method="GET">
-    <button>List courses</button>
+    <button>List Courses</button>
 </form>
 </body>
 </html>
