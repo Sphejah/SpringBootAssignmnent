@@ -1,3 +1,4 @@
+// Controller.java
 package com.example.springbootbootapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,10 @@ public class Controller {
     private CourseRepository courseRepository;
 
     @PostMapping("/add")
-    public String addCourse() {
+    public String addCourse(@RequestParam String name, @RequestParam String description) {
         Course course = new Course();
-        course.setName(course.getName());
-        course.setDescription(course.getDescription());;
+        course.setName(name);
+        course.setDescription(description);
         courseRepository.save(course);
         return "Added a new course!";
     }
@@ -25,6 +26,6 @@ public class Controller {
 
     @GetMapping("/find/{id}")
     public Course findCourseById(@PathVariable Integer id) {
-        return courseRepository.findCourseById(id);
+        return courseRepository.findById(id).orElse(null);
     }
 }
