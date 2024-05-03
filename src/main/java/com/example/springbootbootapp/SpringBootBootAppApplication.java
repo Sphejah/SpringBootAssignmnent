@@ -23,44 +23,44 @@ public class SpringBootBootAppApplication {
     }
 
     @GetMapping("/Courses")
-    public String getCourses(@RequestParam(value = "courseName", defaultValue = " This course doesn't exist") String name) {
-        return FoundationCourses(name) + "<br>" +
-                undergraduateCourse(name) + "<br>" +
-                HonoursCourses(name);
+    public String getCourses(@RequestParam(value = "courseName", defaultValue = "This course doesn't exist") String name) {
+        return foundationCourses(name) + "<br>" +
+                undergraduateCourses(name) + "<br>" +
+                honoursCourses(name);
     }
 
     @GetMapping("/foundationCourse")
-    private String FoundationCourses(@RequestParam(value = "courseName", defaultValue = " ") String name) {
-        List<String> FoundationCourses = new ArrayList<>();
-        FoundationCourses.add("Computer Literacy for Science (F)");
-        FoundationCourses.add("Advanced Computer Programming (F)");
+    private String foundationCourses(@RequestParam(value = "courseName", defaultValue = " ") String name) {
+        List<String> foundationCourses = new ArrayList<>();
+        foundationCourses.add("Computer Literacy for Science (F)");
+        foundationCourses.add("Advanced Computer Programming (F)");
 
-        return String.format("These are 2 Foundation courses offered in the Computer Science Department  %s!: ", name);
+        return String.format(String.valueOf(foundationCourses));
 
     }
 
     @GetMapping("/undergraduateCourse")
 
-    private String undergraduateCourse(@RequestParam(value = "courseName", defaultValue = " ") String name) {
+    private String undergraduateCourses(@RequestParam(value = "courseName", defaultValue = " ") String name) {
 
-        List<String> undergraduateCourse = new ArrayList<>();
-        undergraduateCourse.add("Advanced Programming");
-        undergraduateCourse.add("Computer Architecture and Organisation");
-        undergraduateCourse.add("Software Engineering");
-        undergraduateCourse.add("Operating Systems");
-        undergraduateCourse.add("Computer Networks");
-        return String.format("5 Undergraduate courses offered in the Computer Science Department %s!", name);
+        List<String> undergraduateCourses = new ArrayList<>();
+        undergraduateCourses.add("Advanced Programming");
+        undergraduateCourses.add("Computer Architecture and Organisation");
+        undergraduateCourses.add("Software Engineering");
+        undergraduateCourses.add("Operating Systems");
+        undergraduateCourses.add("Computer Networks");
+        return String.format(String.valueOf(undergraduateCourses));
 
     }
 
     @GetMapping("/honoursCourse")
-    private String HonoursCourses(@RequestParam(value = "courseName", defaultValue = " ") String name) {
-        List<String> HonoursCourses = new ArrayList<>();
-        HonoursCourses.add("Advanced Java Programming");
-        HonoursCourses.add("Mini Project");
-        HonoursCourses.add("Intelligent Systems");
-        HonoursCourses.add("Distributed Web Computing");
-        return String.format("4 Honours courses offered in the Computer Science Department %s!", name);
+    private String honoursCourses(@RequestParam(value = "courseName", defaultValue = " ") String name) {
+        List<String> honoursCourses = new ArrayList<>();
+        honoursCourses.add("Advanced Java Programming");
+        honoursCourses.add("Mini Project");
+        honoursCourses.add("Intelligent Systems");
+        honoursCourses.add("Distributed Web Computing");
+        return String.format(String.valueOf(honoursCourses));
 
     }
 }

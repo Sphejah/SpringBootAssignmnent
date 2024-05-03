@@ -3,17 +3,17 @@ import lombok.Setter;
 
 @Setter
 @Getter
-class Course {
+class CourseRepository {
     // Getter and setter methods
-    private Long id;
+    private long id;
         private String name;
         private String description;
 
         // Constructors
-        public Course() {
+        public CourseRepository() {
         }
 
-        public Course(Long id, String name, String description) {
+        public CourseRepository(Long id, String name, String description) {
             this.id = id;
             this.name = name;
             this.description = description;
